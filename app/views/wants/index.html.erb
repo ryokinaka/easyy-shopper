@@ -1,0 +1,28 @@
+<div class="container">
+  <% @wants.each do |want| %>
+    <div class="row">
+      <div class="col-4">
+        <% if want.item.image? %>
+          <%= image_tag want.item.image.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <div>
+          出品者：<%= want.item.user.name %>
+        </div>
+        <div>
+          商品名：<%= want.item.title %>
+        </div>
+        <div>
+          カテゴリー：<%= want.item.category %>
+        </div>
+        <div>
+          価格：<%= want.item.price %>円
+        </div>
+        <div>
+          <%= render 'like_button', item: want %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

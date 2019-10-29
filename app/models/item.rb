@@ -8,4 +8,7 @@ class Item < ApplicationRecord
   validates :category, presence: true, length: { maximum: 20 }
   validates :price, presence: true, length: { maximum: 20 }
   validates :explanation, presence: true, length: { maximum: 255 }
+  
+  has_many :wants, foreign_key: 'item_id', dependent: :destroy
+  has_many :users, through: :wants
 end

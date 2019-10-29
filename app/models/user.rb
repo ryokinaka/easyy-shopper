@@ -8,4 +8,20 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :items
+  
+  has_many :wants
+  has_many :wantings, through: :wants, source: :item
+  
+  def like(item)
+    wants.find_or_create_by(item_id: item.id)
+  end
+  
+  def unlike(item)
+    want = wants.find_by(item_id: item.id)
+    want.destroy if want
+  end
+  
+  def wantings?(item)
+    self.wantings.include?(item)
+  end
 end
