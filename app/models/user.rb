@@ -6,4 +6,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :address, length: { maximum: 60 }
   has_secure_password
+  
+  has_many :items
 end

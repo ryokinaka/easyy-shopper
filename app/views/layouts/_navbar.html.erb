@@ -9,7 +9,7 @@
       <ul class="navbar-nav">
         <% if logged_in? %>
          <li class="nav-item"><%= link_to 'アイテム一覧', root_path, class: 'nav-link' %></li>
-         <li class="nav-item"><%= link_to '気になるものリスト', wants_path, class: 'nav-link' %></li>
+         <li class="nav-item"><%= link_to '気になるものリスト', class: 'nav-link' %></li>
          <li class="nav-item"><%= link_to '出品する', new_item_path, class: 'nav-link' %></li>
          <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user), class: 'nav-link' %></li>
          <li class="nav-item"><%= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete %></li>
