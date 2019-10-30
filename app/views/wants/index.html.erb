@@ -11,7 +11,7 @@
           出品者：<%= want.item.user.name %>
         </div>
         <div>
-          商品名：<%= want.item.title %>
+          商品名：<%= link_to want.item.title, item_path(want.item) %>
         </div>
         <div>
           カテゴリー：<%= want.item.category %>
@@ -19,10 +19,8 @@
         <div>
           価格：<%= want.item.price %>円
         </div>
-        <div>
-          <%= render 'like_button', item: want %>
-        </div>
       </div>
     </div>
   <% end %>
+  <%= paginate @wants %>
 </div>

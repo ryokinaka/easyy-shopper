@@ -1,6 +1,6 @@
 class WantsController < ApplicationController
   def index
-    @wants = Want.all.page(params[:page])
+    @wants = current_user.wants.all.page(params[:page]).per(10)
   end
 
   def create
