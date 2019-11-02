@@ -11,4 +11,7 @@ class Item < ApplicationRecord
   
   has_many :wants, foreign_key: 'item_id', dependent: :destroy
   has_many :users, through: :wants
+  
+  has_many :buyers, foreign_key: 'item_id'
+  has_many :users, through: :buyers
 end

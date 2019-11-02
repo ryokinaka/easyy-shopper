@@ -21,6 +21,27 @@ class ItemsController < ApplicationController
     end
   end
   
+  def purchase
+    @item = Item.find(params[:id])
+  end
+  
+  def buying
+    p '商品のid'
+    item = Item.find(params[:item_id])
+    p item.id
+    current_user.buy(item)
+    flash[:success] = '購入手続きが完了しました'
+    redirect_to done_item_path
+  end
+  
+  def done
+    @item = Item.find(params[:id])
+    buyer = Buyer.new
+    buyer.user_id = current_user.id
+    buyer.item_id = @item.id
+    buyer.save
+  end
+  
   private
   
   def item_params

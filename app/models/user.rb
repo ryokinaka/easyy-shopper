@@ -24,4 +24,11 @@ class User < ApplicationRecord
   def wantings?(item)
     self.wantings.include?(item)
   end
+  
+  has_many :buyers
+  has_many :buyed_items, through: :buyers, source: :item
+  
+  def buyed_item?(item)
+    self.buyed_items.include?(item)
+  end
 end

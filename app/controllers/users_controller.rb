@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @buyer = current_user.buyers.all.page(params[:page]).per(10)
   end
 
   def new
@@ -19,12 +20,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
-  end
-  
-  def likes
-    @user = User.find(params[:id])
-    @wantings = @user.wantings.page(params[:page])
-    counts(@user)
   end
   
   private
