@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :wants
   has_many :wantings, through: :wants, source: :item
   
+  has_many :buyers
+  has_many :buyed_items, through: :buyers, source: :item
+  
   def like(item)
     wants.find_or_create_by(item_id: item.id)
   end
@@ -24,9 +27,6 @@ class User < ApplicationRecord
   def wantings?(item)
     self.wantings.include?(item)
   end
-  
-  has_many :buyers
-  has_many :buyed_items, through: :buyers, source: :item
   
   def buyed_item?(item)
     self.buyed_items.include?(item)

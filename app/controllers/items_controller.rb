@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   end
   
   def buying
-    p '商品のid'
     item = Item.find(params[:item_id])
     p item.id
     current_user.buy(item)
@@ -36,22 +35,14 @@ class ItemsController < ApplicationController
   
   def done
     @item = Item.find(params[:id])
-    buyer = Buyer.new
-    buyer.user_id = current_user.id
-    buyer.item_id = @item.id
-    buyer.save
+    @item.buyers.create(
+      user: current_user
+    )
   end
   
   private
   
   def item_params
     params.require(:item).permit(:image, :title, :category, :price, :explanation)
-  end
-  
-  def correct_user
-    @item = current_user.items.find_by(id: params[:id])
-    unless @item
-      redirect_to root_url
-    end
   end
 end
