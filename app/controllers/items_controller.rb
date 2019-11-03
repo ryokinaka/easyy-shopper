@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
   
   def buying
     item = Item.find(params[:item_id])
-    p item.id
     current_user.buy(item)
     flash[:success] = '購入手続きが完了しました'
     redirect_to done_item_path

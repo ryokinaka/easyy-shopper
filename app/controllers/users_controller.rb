@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @buyer = current_user.buyers.all.page(params[:page]).per(10)
+    @buyer = current_user.buyers.all.page(params[:page]).per(5)
   end
 
   def new
