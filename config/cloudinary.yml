@@ -1,6 +1,19 @@
+---
+development:
+  cloud_name: hsfd0xshp
+  api_key: '832374119173976'
+  api_secret: bx4cHGU7WppufjMFEZzY4_JKpjY
+  enhance_image_tag: true
+  static_file_support: false
 production:
-cloud_name: dp0prvj9t
-api_key: ENV[835914785273986]
-api_secret: ENV[K1mjDckGwHOLtYzSPP9ZKqxPaQo]
-secure: true
-cdn_subdomain: true
+  cloud_name: hsfd0xshp
+  api_key: '832374119173976'
+  api_secret: bx4cHGU7WppufjMFEZzY4_JKpjY
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: hsfd0xshp
+  api_key: '832374119173976'
+  api_secret: bx4cHGU7WppufjMFEZzY4_JKpjY
+  enhance_image_tag: true
+  static_file_support: false
