@@ -3,7 +3,11 @@
     <%= render 'items/items', items: @items %>
   </div>
 <% else %>
-<p>メールアドレス：a@co.jp パスワード：a でログインできます。</p>
+
+<!--後ほど削除-->
+<div>メールアドレス：<span class="text-danger">guest@co.jp</span><div> 
+<div>パスワード：<span class="text-danger">guest</span> でログインできます。<div>
+
   <div class="center jumbotron">
     <div class="text-center">
       <h1>Original application</h1>
