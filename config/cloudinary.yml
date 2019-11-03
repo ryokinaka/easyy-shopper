@@ -1,0 +1,6 @@
+production:
+cloud_name: dp0prvj9t
+api_key: ENV[835914785273986]
+api_secret: ENV[K1mjDckGwHOLtYzSPP9ZKqxPaQo]
+secure: true
+cdn_subdomain: true
