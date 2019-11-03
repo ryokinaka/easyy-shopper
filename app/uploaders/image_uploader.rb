@@ -51,6 +51,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 # アップローダーでどんな種類のものを受け取るか指定
   storage :file
 
+
 # ファイルサイズに制限をつける
   def size_range
     1..5.megabytes
@@ -92,14 +93,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 # アップロードされたファイルを保存するディレクトリをデフォルトに設定する
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-  
-  if Rails.env.development?
-    storage :fog
-  elsif Rails.env.test?
-    storage :fog
-  else
-    storage :fog
   end
   
 end
