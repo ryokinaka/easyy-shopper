@@ -4,7 +4,7 @@
       <div class="col-4 col-md-3">
         <div>
           <% if item.image? %>
-            <%= image_tag item.image.url(:thumb) %>
+            <%= image_tag item.image.to_s.url(:thumb) %>
           <% end %>
         </div>
         <div>
