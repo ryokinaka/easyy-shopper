@@ -49,7 +49,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
 # アップローダーでどんな種類のものを受け取るか指定
-  storage :file
+  # storage :file
 
 # ファイルサイズに制限をつける
   def size_range
