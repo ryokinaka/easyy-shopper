@@ -51,7 +51,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 # アップローダーでどんな種類のものを受け取るか指定
   storage :file
 
-
 # ファイルサイズに制限をつける
   def size_range
     1..5.megabytes
@@ -88,7 +87,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
-
 
 # アップロードされたファイルを保存するディレクトリをデフォルトに設定する
   def store_dir
