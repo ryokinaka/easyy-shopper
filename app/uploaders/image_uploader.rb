@@ -58,15 +58,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
 # 画像の上限を640x480にする
-  process :resize_to_limit => [640, 480]
+  # process :resize_to_limit => [640, 480]
 
 # 保存形式をJPGにする
-  process :convert => 'jpg'
+  # process :convert => 'jpg'
 
 # アップロード時に、300*300サイズのサムネイルも保存する
-  version :thumb do
-    process :resize_to_limit => [300, 300]
-  end
+  # version :thumb do
+  #   process :resize_to_limit => [300, 300]
+  # end
 
 # jpg,jpeg,gif,pngしか受け付けない
   def extension_whitelist
@@ -93,6 +93,23 @@ class ImageUploader < CarrierWave::Uploader::Base
 # アップロードされたファイルを保存するディレクトリをデフォルトに設定する
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+  
+  include Cloudinary::CarrierWave
+  
+  process :convert => 'png'
+  process :tags => ['image']
+  
+  version :standard do
+    process :resize_to_fill => [640, 480, :north]
+  end
+  
+  version :thumb do
+    process :resize_to_fit => [300, 300]
+  end
+  
+  def public_id
+    return item.id
   end
   
 end
