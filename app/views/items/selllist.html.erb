@@ -1,0 +1,29 @@
+<h4 class="mt-5 mb-5">出品した商品</h4>
+<div class="container">
+  <div class="row">
+    <% @item.each do |item| %>
+      <div class="col-6 col-lg-3">
+        <% if item.image? %>
+          <%= image_tag item.image.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div>
+          出品者：<%= item.user.name %>
+        </div>
+        <div>
+          商品名：<%= link_to item.title, item_path(item) %>
+        </div>
+        <div>
+          価格：<%= item.price %>円
+        </div>
+        <% if current_user.buyed_item?(item) %>
+          販売状況：<span class="text-danger">売却済み</span>
+        <% else %>
+          販売状況：<span class="text-warning">販売中</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @item %>
+</div>

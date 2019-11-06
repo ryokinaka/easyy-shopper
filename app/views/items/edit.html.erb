@@ -1,0 +1,41 @@
+<div class="text-center">
+  <h2>アイテム情報を変更する</h2>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    
+    <%= form_with(model: @item, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+    
+      <div class="form-group">
+        <%= f.label "商品の画像をアップロード" %><br><%= f.file_field :image %>※変更しなくても大丈夫です
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :title, '商品名' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :category, 'カテゴリー' %>
+        <%= f.select :category, [['レディース', 'レディース'], ['メンズ', 'メンズ'], ['ベビー・キッズ', 'ベビー・キッズ'], ['インテリア・住まい・小物', 'インテリア・住まい・小物'], ['本・音楽・ゲーム', '本・音楽・ゲーム'], ['おもちゃ・ホビー・グッズ', 'おもちゃ・ホビー・グッズ'], ['コスメ・香水・美容', 'コスメ・香水・美容'], ['家電・スマホ・カメラ', '家電・スマホ・カメラ'], ['スポーツ・レジャー', 'スポーツ・レジャー'], ['ハンドメイド', 'ハンドメイド'], ['チケット', 'チケット'], ['自転車・オートバイ', '自転車・オートバイ'], ['その他', 'その他']], :prompt => '※もう一度選択してください', class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :price, '価格' %>
+        <%= f.number_field :price, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :explanation, '商品説明' %>
+        <%= f.text_field :explanation, class: 'form-control' %>
+      </div>
+    
+      <%= f.submit 'アイテム情報を更新する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
+<div class="text-right mt-3">
+  <%= link_to 'アイテム詳細へ戻る', item_path, class: 'btn btn-secondary' %>
+</div>

@@ -6,13 +6,15 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:show, :create]
+  resources :users, only: [:show, :create, :edit, :update]
   
-  resources :items, only: [:show, :new, :create] do
+  resources :items, only: [:show, :new, :create, :edit, :update, :destroy] do
     member do
       get :purchase
       post :buying
       get :done
+      get :buylist
+      get :selllist
     end
   end
     

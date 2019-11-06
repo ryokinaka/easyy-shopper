@@ -1,26 +1,27 @@
 <div class="container">
-  <% @wants.each do |want| %>
-    <div class="row">
-      <div class="col-4">
-        <% if want.item.image? %>
-          <%= image_tag want.item.image.url(:thumb) %>
-        <% end %>
-      </div>
-      <div class="col-3">
-        <div>
-          出品者：<%= want.item.user.name %>
+  <div class="row">
+    <% @wants.each do |want| %>
+      <% if current_user.buyed_item?(want.item) %>
+  
+      <% else %>
+        <div class="col-6 col-lg-3">
+          <% if want.item.image? %>
+            <%= image_tag want.item.image.url(:thumb) %>
+          <% end %>
         </div>
-        <div>
-          商品名：<%= link_to want.item.title, item_path(want.item) %>
+        <div class="col-6 col-lg-3">
+          <div>
+            出品者：<%= want.item.user.name %>
+          </div>
+          <div>
+            商品名：<%= link_to want.item.title, item_path(want.item) %>
+          </div>
+          <div>
+            価格：<%= want.item.price %>円
+          </div>
         </div>
-        <div>
-          カテゴリー：<%= want.item.category %>
-        </div>
-        <div>
-          価格：<%= want.item.price %>円
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
   <%= paginate @wants %>
 </div>

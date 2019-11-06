@@ -64,9 +64,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 # アップロード時に、300*300サイズのサムネイルも保存する
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    process :resize_to_limit => [200, 200]
   end
-
+  
 # jpg,jpeg,gif,pngしか受け付けない
   def extension_whitelist
     %w(jpg jpeg gif png)

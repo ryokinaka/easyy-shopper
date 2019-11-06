@@ -1,20 +1,39 @@
 <div class="container">
+  <div class="text-right mb-5">
+    <%= form_tag(root_path, method: 'get') do %>
+      <%= select_tag :category, options_for_select(Item.categories), :prompt => '全て' %>
+      <%= submit_tag '絞り込み' %>
+    <% end %>
+  </div>
   <div class="row">
     <% items.each do |item| %>
-      <div class="col-4 col-md-3">
-        <div>
-          <% if item.image? %>
-            <%= image_tag item.image.url(:thumb) %>
+      <% if current_user.buyed_item?(item) %>
+      
+      <% else %>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div>
+            <% if item.image? %>
+              <%= image_tag item.image.url(:thumb) %>
+            <% end %>
+          </div>
+          <% if current_user.id == item.user_id %>
+            <div>
+              出品者：<span class="text-danger"><%= item.user.name %></span>
+            </div>
+          <% else %>
+            <div>
+              出品者：<%= item.user.name %>
+            </div>
           <% end %>
+          <div>
+            商品名：<%= link_to item.title, item_path(item) %>
+          </div>
+          <div>
+            価格：<%= item.price %>円
+          </div>
         </div>
-        <div>
-          商品名：<%= link_to item.title, item_path(item) %>
-        </div>
-        <div>
-          価格：<%= item.price %>円
-        </div>
-      </div>
+      <% end %>
     <% end %>
-    <%= paginate items %>
   </div>
+  <%= paginate items %>
 </div>

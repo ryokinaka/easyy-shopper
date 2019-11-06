@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -8,14 +8,21 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-         <li class="nav-item"><%= link_to 'アイテム一覧', root_path, class: 'nav-link' %></li>
-         <li class="nav-item"><%= link_to '気になる物リスト', wants_path, class: 'nav-link' %></li>
-         <li class="nav-item"><%= link_to '出品する', new_item_path, class: 'nav-link' %></li>
-         <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user), class: 'nav-link' %></li>
-         <li class="nav-item"><%= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete %></li>
+          <li class="nav-item <%= 'active' if current_page?(root_path) %>"><%= link_to 'アイテム一覧', root_path, class: 'nav-link' %></li>
+          <li class="nav-item <%= 'active' if current_page?(wants_path) %>"><%= link_to 'お気に入り', wants_path, class: 'nav-link' %></li>
+          <li class="nav-item <%= 'active' if current_page?(new_item_path) %>"><%= link_to '出品', new_item_path, class: 'nav-link' %></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+            <ul class="dropdown-menu dropdown-menu-right">        
+              <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
+              <li class="dropdown-item"><%= link_to '購入した商品', buylist_item_path(current_user) %></li>
+              <li class="dropdown-item"><%= link_to '出品した商品', selllist_item_path(current_user) %></li>
+            </ul>
+          </li>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete %></li>
         <% else %>
-          <li class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Login', login_path, class: 'nav-link' %></li>
+          <li class="nav-item <%= 'active' if current_page?(signup_path) %>"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>
+          <li class="nav-item <%= 'active' if current_page?(login_path) %>"><%= link_to 'Login', login_path, class: 'nav-link' %></li>
         <% end %>
       </ul>
     </div>

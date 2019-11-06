@@ -1,5 +1,5 @@
-<div class="container">
-  <h2 class="text-center mt-5 mb-5">購入が完了しました</h2>
+<div class="container text-center">
+  <h2 class="mt-5 mb-5">購入が完了しました</h2>
   <div class="mb-3">
     配送先：<%= current_user.address %>
   </div>
@@ -7,12 +7,12 @@
     <%= current_user.name %>さんが購入した商品
   </div>
   <div class="row mt-3 mb-3">
-    <div class="col-4">
+    <div class="col-md-4">
       <% if @item.image? %>
         <%= image_tag @item.image.url(:thumb) %>
       <% end %>
     </div>
-    <div class="col-3">
+    <div class="col-md-8">
       <div>
         出品者：<%= @item.user.name %>
       </div>

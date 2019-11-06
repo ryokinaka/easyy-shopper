@@ -21,6 +21,30 @@ class ItemsController < ApplicationController
     end
   end
   
+  def edit
+    @item = Item.find(params[:id])
+  end
+  
+  def update
+    @item = Item.find(params[:id])
+    
+    if @item.update(item_params)
+      flash[:success] = 'アイテム情報を更新しました'
+      redirect_to @item
+    else
+      flash.now[:danger] = 'アイテム情報の更新に失敗しました'
+      render :edit
+    end
+  end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    
+    flash[:success] = 'アイテムを削除しました'
+    redirect_to root_url
+  end
+  
   def purchase
     @item = Item.find(params[:id])
   end
@@ -37,6 +61,14 @@ class ItemsController < ApplicationController
     @item.buyers.create(
       user: current_user
     )
+  end
+  
+  def buylist
+    @buyer = current_user.buyers.all.order(id: :desc).page(params[:page]).per(10)
+  end
+  
+  def selllist
+    @item = current_user.items.all.order(id: :desc).page(params[:page]).per(10)
   end
   
   private

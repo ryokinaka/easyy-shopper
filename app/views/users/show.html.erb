@@ -14,32 +14,6 @@
       <li>Email：<%= @user.email %></li>
       <li>Address：<%= @user.address %></li>
     </ul>
+    <%= link_to 'プロフィールを編集する', edit_user_path(@user), class: 'btn btn-secondary' %>
   </div>
-</div>
-<h4 class="mt-5 mb-5">購入した商品</h4>
-<div class="container">
-  <% @buyer.each do |buyer| %>
-    <div class="row">
-      <div class="col-4">
-        <% if buyer.item.image? %>
-          <%= image_tag buyer.item.image.url(:thumb) %>
-        <% end %>
-      </div>
-      <div class="col-3">
-        <div>
-          出品者：<%= buyer.item.user.name %>
-        </div>
-        <div>
-          商品名：<%= link_to buyer.item.title, item_path(buyer.item) %>
-        </div>
-        <div>
-          カテゴリー：<%= buyer.item.category %>
-        </div>
-        <div>
-          価格：<%= buyer.item.price %>円
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <%= paginate @buyer %>
 </div>
