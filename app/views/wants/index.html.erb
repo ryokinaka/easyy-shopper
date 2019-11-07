@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <% @wants.each do |want| %>
-      <% if current_user.buyed_item?(want.item) %>
+      <% if want.item.buying == 'soldout' %>
   
       <% else %>
         <div class="col-6 col-lg-3">

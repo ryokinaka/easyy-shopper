@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <% items.each do |item| %>
-      <% if current_user.buyed_item?(item) %>
+      <% if item.buying == 'soldout' %>
       
       <% else %>
         <div class="col-6 col-md-4 col-lg-3">

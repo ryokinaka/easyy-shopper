@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
     @item.buyers.create(
       user: current_user
     )
+    @item.update(category: 'その他', buying: 'soldout')
   end
   
   def buylist
@@ -74,6 +75,6 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:image, :title, :category, :price, :explanation)
+    params.require(:item).permit(:image, :title, :category, :price, :explanation, :buying)
   end
 end

@@ -1,4 +1,4 @@
-<% if current_user.buyed_item?(item) %>
+<% if current_user.id == item.user_id %>
 
 <% elsif current_user.wantings?(item) %>
   <%= form_for(current_user.wants.find_by(item_id: item.id), html: { method: :delete }) do |f| %>

@@ -14,7 +14,7 @@
     </div>
   </div>
   
-  <% if current_user.id == @item.user_id %>
+  <% if @item.buying == 'soldout' %>
     
   <% else %>
     <div class="row">
@@ -34,7 +34,7 @@
     </div>
   </div>
   
-  <% if current_user.buyed_item?(@item) %>
+  <% if @item.buying == 'soldout' %>
     
   <% elsif current_user.id == @item.user_id %>
     <div class="text-right mb-3">
