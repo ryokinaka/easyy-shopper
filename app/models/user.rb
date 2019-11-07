@@ -31,4 +31,5 @@ class User < ApplicationRecord
   def buyed_item?(item)
     self.buyed_items.include?(item)
   end
+
 end
