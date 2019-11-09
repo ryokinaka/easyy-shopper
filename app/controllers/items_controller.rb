@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :require_user_logged_in
     
+  def index
+  end
+    
   def show
     @item = Item.find(params[:id])
   end
