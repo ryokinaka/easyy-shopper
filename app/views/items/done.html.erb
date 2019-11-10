@@ -1,30 +1,39 @@
-<div class="container text-center">
-  <h2 class="mt-5 mb-5">購入が完了しました</h2>
-  <div class="mb-3">
-    配送先：<%= current_user.address %>
-  </div>
-  <div>
-    <%= current_user.name %>さんが購入した商品
+<div class="container">
+  <h2 class="text-center mt-5 mb-5">購入が完了しました</h2>
+  <div class"row">
+    <h5 class="text-center col-md-4">
+      <%= current_user.name %>さんが購入した商品
+    </h5>
   </div>
   <div class="row mt-3 mb-3">
-    <div class="col-md-4">
+    <div class="text-center col-md-4 mb-3">
       <% if @item.image? %>
         <%= image_tag @item.image.url(:thumb) %>
       <% end %>
     </div>
     <div class="col-md-8">
-      <div>
-        出品者：<%= @item.user.name %>
-      </div>
-      <div>
-        商品名：<%= link_to @item.title, item_path(@item) %>
-      </div>
-      <div>
-        カテゴリー：<%= @item.category %>
-      </div>
-      <div>
-        価格：<%= @item.price %>円
-      </div>
+      <table class="table">
+        <tr>
+          <td>出品者</td>
+          <td><%= @item.user.name %></td>
+        </tr>
+        <tr>
+          <td>商品名</td>
+          <td><%= link_to @item.title, item_path(@item) %></td>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td><%= @item.price %>円</td>
+        </tr>
+        <tr>
+          <td>配送先</td>
+          <td><%= current_user.address %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

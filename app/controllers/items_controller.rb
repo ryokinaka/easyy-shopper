@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
     else
       @items = current_user.items.order(id: :desc).page(params[:page])
       flash.now[:danger] = '出品登録ができませんでした。'
-      render 'toppages/index'
+      render 'items/index'
     end
   end
   
@@ -57,13 +57,6 @@ class ItemsController < ApplicationController
   
   def purchase
     @item = Item.find(params[:id])
-  end
-  
-  def buying
-    item = Item.find(params[:item_id])
-    current_user.buy(item)
-    flash[:success] = '購入手続きが完了しました'
-    redirect_to done_item_path
   end
   
   def done

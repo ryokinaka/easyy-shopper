@@ -1,5 +1,5 @@
 <div class="row">
-  <aside class="col-sm-4">
+  <aside class="col-sm-4 mb-3">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"><%= @user.name %></h3>
@@ -9,11 +9,28 @@
       </div>
     </div>
   </aside>
+  
   <div class="col-sm-8">
-    <ul>
-      <li>Email：<%= @user.email %></li>
-      <li>Address：<%= @user.address %></li>
-    </ul>
-    <%= link_to 'プロフィールを編集する', edit_user_path(@user), class: 'btn btn-secondary' %>
+    <table class="table">
+      <tr class="table-head">
+        <th>プロフィール</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td><%= @user.address %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <div class="text-right mb-4">
+      <%= link_to 'プロフィールを編集する', edit_user_path(@user), class: 'btn btn-secondary' %>
+    </div>
   </div>
 </div>

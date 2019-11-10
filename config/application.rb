@@ -30,5 +30,6 @@ module Originalapps
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    config.i18n.default_locale = :ja
   end
 end

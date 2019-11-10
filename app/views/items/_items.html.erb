@@ -5,31 +5,31 @@
       <%= submit_tag '絞り込み' %>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mb-4">
     <% items.each do |item| %>
       <% if item.buying == 'soldout' %>
       
       <% else %>
-        <div class="col-6 col-md-4 col-lg-3">
-          <div>
+        <div class="col-6 col-md-4 col-lg-3 frame">
+          <div class="frame-image">
             <% if item.image? %>
               <%= image_tag item.image.url(:thumb) %>
             <% end %>
           </div>
           <% if current_user.id == item.user_id %>
-            <div>
+            <div class="frame-info">
               出品者：<span class="text-danger"><%= item.user.name %></span>
             </div>
           <% else %>
-            <div>
+            <div class="frame-info">
               出品者：<%= item.user.name %>
             </div>
           <% end %>
-          <div>
+          <div class="frame-info">
             商品名：<%= link_to item.title, item_path(item) %>
           </div>
-          <div>
-            価格：<%= item.price %>円
+          <div class="frame-info">
+            価格　：<%= item.price %>円
           </div>
         </div>
       <% end %>
