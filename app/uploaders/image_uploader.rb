@@ -49,7 +49,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
 # アップローダーでどんな種類のものを受け取るか指定
-  storage :file
+  # storage :file
 
 # ファイルサイズに制限をつける
   def size_range
@@ -60,7 +60,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [640, 480]
 
 # 保存形式をJPGにする
-  process :convert => 'jpg'
+  process :convert => 'png'
+  process :tags => ['image']
 
 # アップロード時に、300*300サイズのサムネイルも保存する
   version :thumb do

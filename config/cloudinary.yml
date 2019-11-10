@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hwrmwpsku
+  api_key: '693217124694624'
+  api_secret: 5weVLcQJLZ-lx-dd3E2Pu1myMW4
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: hwrmwpsku
+  api_key: '693217124694624'
+  api_secret: 5weVLcQJLZ-lx-dd3E2Pu1myMW4
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: hwrmwpsku
+  api_key: '693217124694624'
+  api_secret: 5weVLcQJLZ-lx-dd3E2Pu1myMW4
+  enhance_image_tag: true
+  static_file_support: false
