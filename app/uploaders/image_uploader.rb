@@ -61,7 +61,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 # 保存形式をJPGにする
   process :convert => 'png'
-  process :tags => ['image']
+  # process :tags => ['image']
 
 # アップロード時に、300*300サイズのサムネイルも保存する
   version :thumb do
@@ -83,6 +83,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
+
   protected
   def secure_token
     var = :"@#{mounted_as}_secure_token"
@@ -93,7 +99,5 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
-  include Cloudinary::CarrierWave if Rails.env.production?
   
 end
