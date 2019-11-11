@@ -17,6 +17,9 @@
         <div>
           価格　：<%= item.price %>円
         </div>
+        <div>
+          出品日：<%= item.created_at.strftime('%Y/%m/%d') %>
+        </div>
         <% if item.buying == 'soldout' %>
           販売状況：<span class="text-danger">売却済み</span>
         <% else %>
