@@ -15,7 +15,7 @@
           商品名：<%= link_to item.title, item_path(item) %>
         </div>
         <div>
-          価格：<%= item.price %>円
+          価格　：<%= item.price %>円
         </div>
         <% if item.buying == 'soldout' %>
           販売状況：<span class="text-danger">売却済み</span>

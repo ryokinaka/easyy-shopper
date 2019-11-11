@@ -20,6 +20,11 @@
         <%= f.label :category, 'カテゴリー' %>
         <%= f.select :category, [['レディース', 'レディース'], ['メンズ', 'メンズ'], ['ベビー・キッズ', 'ベビー・キッズ'], ['インテリア・住まい・小物', 'インテリア・住まい・小物'], ['本・音楽・ゲーム', '本・音楽・ゲーム'], ['おもちゃ・ホビー・グッズ', 'おもちゃ・ホビー・グッズ'], ['コスメ・香水・美容', 'コスメ・香水・美容'], ['家電・スマホ・カメラ', '家電・スマホ・カメラ'], ['スポーツ・レジャー', 'スポーツ・レジャー'], ['ハンドメイド', 'ハンドメイド'], ['チケット', 'チケット'], ['自転車・オートバイ', '自転車・オートバイ'], ['その他', 'その他']], :prompt => '※もう一度選択してください', class: 'form-control' %>
       </div>
+      
+      <div class="form-group">
+        <%= f.label :condition, '商品の状態' %>
+        <%= f.select :condition, [['新品、未使用', '新品、未使用'], ['未使用に近い', '未使用に近い'], ['目立った傷や汚れなし', '目立った傷や汚れなし'], ['やや傷や汚れあり', 'やや傷や汚れあり'], ['傷や汚れあり', '傷や汚れあり'], ['全体的に状態が悪い', '全体的に状態が悪い']], :prompt => '選択してください', class: 'form-control' %>
+      </div>
     
       <div class="form-group">
         <%= f.label :price, '価格' %>
@@ -29,6 +34,21 @@
       <div class="form-group">
         <%= f.label :explanation, '商品説明' %>
         <%= f.text_field :explanation, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :shipping, '配送料の負担' %>
+        <%= f.select :shipping, [['送料込み(出品者負担)', '送料込み(出品者負担)'], ['着払い(購入者負担)', '着払い(購入者負担)']], :selected => '送料込み(出品者負担)', class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :region, '発送元の地域' %>
+        <%= f.select :region, [['北海道', '北海道'], ['東北', '東北'], ['関東', '関東'], ['中部', '中部'], ['近畿', '近畿'], ['中国', '中国'], ['四国', '四国'], ['九州', '九州'], ['沖縄', '沖縄']], :prompt => '選択してください', class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :day, '発送までの日数' %>
+        <%= f.select :day, [['1~2日で発送', '1~2日で発送'], ['2~3日で発送', '2~3日で発送'], ['4~7日で発送', '4~7日で発送']], :selected => '2~3日で発送', class: 'form-control' %>
       </div>
     
       <%= f.submit 'アイテム情報を更新する', class: 'btn btn-primary btn-block' %>

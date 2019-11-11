@@ -5,9 +5,13 @@ class Item < ApplicationRecord
   
   validates :image, presence: true
   validates :title, presence: true, length: { maximum: 50 }
-  validates :category, presence: true, length: { maximum: 20 }
+  validates :category, presence: true
   validates :price, presence: true, length: { maximum: 20 }, numericality: { only_integer: true, greater_than: 0 }
   validates :explanation, presence: true, length: { maximum: 255 }
+  validates :condition, presence: true
+  validates :shipping, presence: true
+  validates :region, presence: true
+  validates :day, presence: true
   
   has_many :wants, foreign_key: 'item_id', dependent: :destroy
   has_many :users, through: :wants
