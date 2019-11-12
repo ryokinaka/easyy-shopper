@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :new, :create, :edit, :update, :destroy] do
     member do
       get :purchase
-      post :buying
       get :done
       get :buylist
       get :selllist
+      post :pay
     end
   end
     

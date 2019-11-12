@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_user_logged_in
+  require 'payjp'
     
   def index
     if logged_in?
@@ -57,6 +58,18 @@ class ItemsController < ApplicationController
   
   def purchase
     @item = Item.find(params[:id])
+  end
+  
+  def pay
+    @item = Item.find(params[:id])
+   
+    Payjp.api_key = 'sk_test_55c13464387e3db8196f68a1'
+    Payjp::Charge.create(
+      currency: 'jpy',
+      amount: @item.price,
+      card: params['payjp-token']
+    )
+    redirect_to done_item_path
   end
   
   def done

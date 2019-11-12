@@ -66,3 +66,5 @@ group :production do
 end
 
 gem 'cloudinary'
+
+gem 'payjp'

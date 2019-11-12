@@ -67,8 +67,14 @@
   </table>
   
   <div class="text-center mt-3 mb-4">
-    <%= form_for(@item, url: done_item_path, method: :get) do |f| %>
-      <%= f.submit '購入手続きを完了する', class: 'btn btn-primary btn-lg' %>
+    <%= form_with(url: pay_item_path, method: :post) do %>
+      <script
+        class="payjp-button"
+        data-key="pk_test_fb66f9cb04fc55ea8f9eb4cf"
+        src="https://checkout.pay.jp"
+        type="text/javascript"
+        data-text="クレジットカード情報を入力する">
+      </script>
     <% end %>
   </div>
 </div>
