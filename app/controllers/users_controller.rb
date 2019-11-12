@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :likes]
+  before_action :require_user_logged_in, only: [:show, :edit, :update]
   
   def show
     @user = User.find(params[:id])

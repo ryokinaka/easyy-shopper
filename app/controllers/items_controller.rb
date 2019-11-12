@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:show, :new, :create, :edit, :update, :destroy, :purchase, :pay, :done, :buylist, :selllist]
   require 'payjp'
     
   def index

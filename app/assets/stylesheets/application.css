@@ -57,3 +57,28 @@ body {
   padding-left: 5px;
   padding-top: 10px;
 }
+
+.logo {
+  font-size: 25px;
+}
+.red {
+  color: red;
+}
+.orange {
+  color: orange;
+}
+.yellow {
+  color: yellow;
+}
+.green {
+  color: green;
+}
+.skyblue {
+  color: skyblue;
+}
+.blue {
+  color: blue;
+}
+.purple {
+  color: purple;
+}
