@@ -67,7 +67,7 @@
     </div>
   <% else %>
     <div class="text-right mt-3 mb-4">
-      <%= link_to '購入手続きへ', purchase_item_path(@item.id), class: 'btn btn-primary btn-lg' %>
+      <%= link_to '購入手続きへ', purchase_item_path(@item.id), class: 'btn btn-primary btn-lg', data: {"turbolinks" => false} %>
     </div>
   <% end %>
 </div>

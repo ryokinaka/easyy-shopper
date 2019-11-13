@@ -82,3 +82,12 @@ body {
 .purple {
   color: purple;
 }
+
+.return {
+  width: 206px;
+  height: 32px;
+  border-radius: 2px;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}

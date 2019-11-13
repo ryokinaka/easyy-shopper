@@ -76,6 +76,8 @@
         data-text="クレジットカード情報を入力する">
       </script>
     <% end %>
+    <%= link_to :back, data: {"turbolinks" => false} do %>
+      <button class="btn btn-secondary mt-3 return">戻る</button>
+    <% end %>
   </div>
-  <p class="text-right text-warning pb-4">※クレジットカード情報入力ボタンがない場合はページをリロードしてください</p>
 </div>
